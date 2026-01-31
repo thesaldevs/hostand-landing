@@ -1,0 +1,219 @@
+{
+  "siteTitle": "7 Kings Villas",
+  "defaultLang": "en",
+
+  "languages": [
+    { "code": "en", "label": "EN" },
+    { "code": "it", "label": "IT" }
+  ],
+
+  "theme": {
+    "primaryColor": "black",
+    "accentColor": "#cfac44",
+    "headerBg": "rgba(255,255,255,1)",
+    "logoMaxWidth": "100px"
+  },
+
+  "logo": "img/logo.png",
+
+  "hero": {
+    "folder": "img/hero",
+    "start": 0,
+    "count": 10,
+    "pattern": "{index}.jpg.webp",
+    "intervalMs": 3000,
+    "position": "50% 40%",
+    "overlayOpacity": 0.25
+  },
+
+  "nav": [
+    { "href": "#slider", "labelKey": "nav_apartments" },
+    { "href": "#prenota", "labelKey": "nav_book" },
+    { "href": "#testimonials", "labelKey": "nav_services" },
+    { "href": "#contact", "labelKey": "nav_contact" }
+  ],
+
+  "sections": {
+    "intro": ["intro_1", "intro_2", "intro_3"],
+    "amenities": { "titleKey": "our_apt", "subtitleKey": "apt_desc" },
+    "booking": { "subtitleKey": "book_now", "titleKey": "book" },
+    "map": { "titleKey": "our_location" },
+    "testimonials": { "titleKey": "exclusive_services" },
+    "contact": { "titleKey": "contact_us" },
+    "footer": { "leftKey": "no_cookies", "rightKey": "made_by" }
+  },
+
+  "amenities": [
+    { "icon": { "type": "material", "name": "bed" }, "titleKey": "room_spacious", "descKey": "room_bed" },
+    { "icon": { "type": "material", "name": "kitchen" }, "titleKey": "room_kitchen", "descKey": "room_kitchen_desc" },
+    { "icon": { "type": "material", "name": "weekend" }, "titleKey": "room_living", "descKey": "room_living_desc" },
+    { "icon": { "type": "material", "name": "shower" }, "titleKey": "room_bath", "descKey": "room_bath_desc" },
+    { "icon": { "type": "material", "name": "ac_unit" }, "titleKey": "room_clima", "descKey": "room_clima_desc" }
+  ],
+
+  "rooms": [
+    {
+      "id": "classic-villa",
+      "titleKey": "apt_one",
+      "descKey": "apt_one_desc",
+      "coverImage": "img/rooms/classic-villa/0.jpg.webp",
+      "gallery": { "folder": "img/rooms/classic-villa", "start": 0, "count": 61, "pattern": "{index}.jpg.webp" }
+    },
+    {
+      "id": "superior-villa",
+      "titleKey": "apt_two",
+      "descKey": "apt_two_desc",
+      "coverImage": "img/rooms/superior-villa/0.jpg.webp",
+      "gallery": { "folder": "img/rooms/superior-villa", "start": 0, "count": 34, "pattern": "{index}.jpg.webp" }
+    },
+    {
+      "id": "classic-villa-with-terrace",
+      "titleKey": "apt_three",
+      "descKey": "apt_three_desc",
+      "coverImage": "img/rooms/classic-villa-with-terrace/0.jpg.webp",
+      "gallery": { "folder": "img/rooms/classic-villa-with-terrace", "start": 0, "count": 30, "pattern": "{index}.jpg.webp" }
+    }
+  ],
+
+  "testimonials": ["testimonial_1", "testimonial_2", "testimonial_3", "testimonial_4"],
+
+  "contacts": [
+    {
+      "icon": { "type": "fa", "class": "fab fa-whatsapp" },
+      "label": "+39 3314386012",
+      "href": "https://wa.me/393314386012",
+      "target": "_blank",
+      "rel": "noopener"
+    },
+    {
+      "icon": { "type": "material", "name": "email" },
+      "label": "7kingsvillas@gmail.com",
+      "href": "mailto:7kingsvillas@gmail.com"
+    }
+  ],
+
+  "footer": {
+    "creditsEmail": "saldevs@gmail.com"
+  },
+
+  "map": {
+    "center": { "lat": 41.880476, "lon": 12.517758 },
+    "zoom": 15,
+    "markers": [{ "lat": 41.880476, "lon": 12.517758, "popup": "7 Kings Villas" }]
+  },
+
+  "krossWidget": {  
+    "src": "https://data.krossbooking.com/widget/v6/hostand/3.js",
+    "css": "https://data.krossbooking.com/widget/v6/hostand/3.css",
+    "containerSelector": ".kross-container",
+    "containerAttributes": {
+      "data-lang": "en"
+    }
+  },
+
+  "i18n": {
+    "en": {
+      "nav_apartments": "Apartments",
+      "nav_book": "Book",
+      "nav_services": "Services",
+      "nav_contact": "Contact us",
+
+      "intro_1": "7 Kings Villa is a prestigious property with a private inner courtyard, adjacent to the historic San Giovanni district, where there are five new, modern and very quiet apartments offering maximum comfort.",
+      "intro_2": "Our five apartments are arranged over several floors and are equipped with every amenity guests may need, whether they are travelling for leisure or for work.",
+      "intro_3": "In the neighbourhood, which is safe even at night, you will find many shops and services, and it is extremely well connected by Metro lines A and C, just a 2-minute walk away.",
+
+      "our_apt": "Our Apartments",
+      "apt_desc": "Our five apartments are arranged over several floors and are equipped with every amenity guests may need, whether they are travelling for leisure or for work.",
+
+      "room_spacious": "Spacious rooms",
+      "room_bed": "King-size beds and high-quality linen.",
+      "room_kitchen": "Equipped kitchen",
+      "room_kitchen_desc": "Modern appliances.",
+      "room_living": "Living area",
+      "room_living_desc": "Smart TV and ultra-fast Wi-Fi connection.",
+      "room_bath": "Designer bathrooms",
+      "room_bath_desc": "Rain shower and premium courtesy set.",
+      "room_clima": "Air conditioning",
+      "room_clima_desc": "Soundproofing for perfect rest.",
+
+      "apt_one": "Classic Villa",
+      "apt_one_desc": "Classic Villa is arranged over 3 floors for a total of approximately 60 sqm. On the ground floor, there is an entrance with a living room and a fully equipped kitchen; on the lower floor, a room with a full private bathroom; and on the upper floor, a double bedroom with a full private bathroom. Sleeps 2 + 4",
+
+      "apt_two": "Superior Villa",
+      "apt_two_desc": "Superior Villa is arranged over 3 floors for a total of approximately 70 sqm. On the ground floor, there is an entrance with a living room and a fully equipped kitchen; on the lower floor, a room with a full private bathroom; and on the upper floor, a double bedroom with a full private bathroom. Sleeps 2 + 4.",
+
+      "apt_three": "Classic Villa with Terrace",
+      "apt_three_desc": "Classic Villa with Terrace is arranged over 3 floors for a total of approximately 120 sqm. On the ground floor, there is an entrance with a large living room and a fully equipped kitchen; on the lower floor, a room with a private bathroom; on the upper floor, a study corner, a double bedroom with a relaxation area and a full private bathroom, a second double bedroom, and a second full bathroom. Sleeps 4 + 5.",
+
+      "book_now": "Book your unforgettable stay at 7 Kings Villas now and let yourself be enchanted by the magic of Rome!",
+      "book": "Book",
+
+      "our_location": "Our Location",
+
+      "exclusive_services": "We offer exclusive services",
+      "testimonial_1": "Flexible check-in and concierge service for personalized assistance",
+      "testimonial_2": "Professional cleaning for an always impeccable environment",
+      "testimonial_3": "Private transfer on request for airports and stations",
+      "testimonial_4": "Tailor-made experiences such as private tours and food tastings",
+
+      "contact_us": "Contact us",
+
+      "no_cookies": "This site does not use cookies",
+      "made_by": "Made with ❤️ by <b>SalDevs</b>",
+
+      "gallery_no_images": "No images available."
+    },
+
+    "it": {
+      "nav_apartments": "Appartamenti",
+      "nav_book": "Prenota",
+      "nav_services": "Servizi",
+      "nav_contact": "Contattaci",
+
+      "intro_1": "7 Kings Villa è un immobile di pregio con una corte interna privata adiacente al quartiere storico di San Giovanni dove si trovano 5 nuovi appartamenti moderni e molto silenziosi per il massimo comfort.",
+      "intro_2": "I nostri cinque appartamenti si sviluppano su più piani e sono dotati di ogni servizio per gli ospiti, sia per un viaggio di piacere che di lavoro.",
+      "intro_3": "Nel quartiere, sicuro anche la sera, si trovano molte attività commerciali ed è ottimamente collegato dalle linee della Metro A e C distanti solo 2 minuti a piedi.",
+
+      "our_apt": "I nostri appartamenti",
+      "apt_desc": "I nostri cinque appartamenti si sviluppano su più piani e sono dotati di ogni servizio per gli ospiti, sia per un viaggio di piacere che di lavoro.",
+
+      "room_spacious": "Camere spaziose",
+      "room_bed": "Letti king-size e biancheria di alta qualità.",
+      "room_kitchen": "Cucina attrezzata",
+      "room_kitchen_desc": "Elettrodomestici moderni.",
+      "room_living": "Area living",
+      "room_living_desc": "Smart TV e connessione Wi-Fi ultraveloce.",
+      "room_bath": "Bagni di design",
+      "room_bath_desc": "Doccia a pioggia e set di cortesia premium.",
+      "room_clima": "Climatizzazione",
+      "room_clima_desc": "Insonorizzazione per un riposo impeccabile.",
+
+      "apt_one": "Classic Villa",
+      "apt_one_desc": "Classic Villa si sviluppa su 3 piani per un tot di 60 mq circa. Al piano terra ingresso con salone e cucina abitabile, al piano di sotto una stanza con bagno privato completo, al piano superiore una camera da letto matrimoniale con bagno privato completo. Posti letto 2 + 4",
+
+      "apt_two": "Superior Villa",
+      "apt_two_desc": "Superior Villa si sviluppa su 3 piani per un tot di 70 mq circa. Al piano terra ingresso con salone e cucina abitabile, al piano di sotto una stanza con bagno privato completo, al piano superiore una camera da letto matrimoniale con bagno privato completo. Posti letto 2 + 4",
+
+      "apt_three": "Classic Villa con Terrazza",
+      "apt_three_desc": "Classic Villa con Terrazza si sviluppa su 3 piani per un tot di 120 mq circa. Al piano terra ingresso con un ampio salone e cucina abitabile, al piano di sotto una stanza con bagno privato, al piano superiore un angolo studio, una camera da letto matrimoniale con zona relax e bagno privato completo, una seconda camera da letto matrimoniale e un secondo bagno completo. Posti letto 4 + 5",
+
+      "book_now": "Prenotate ora il vostro soggiorno indimenticabile al 7 Kings Villas e lasciatevi incantare dalla magia di Roma!",
+      "book": "Prenota",
+
+      "our_location": "La nostra posizione",
+
+      "exclusive_services": "Offriamo servizi esclusivi",
+      "testimonial_1": "Check-in flessibile e servizio concierge per assistenza personalizzata",
+      "testimonial_2": "Pulizia professionale per un ambiente sempre impeccabile",
+      "testimonial_3": "Transfer privato su richiesta per aeroporti e stazioni",
+      "testimonial_4": "Esperienze su misura come tour privati e degustazioni gastronomiche",
+
+      "contact_us": "Contattaci",
+
+      "no_cookies": "Questo sito non utilizza cookies",
+      "made_by": "Made with ❤️ by <b>SalDevs</b>",
+
+      "gallery_no_images": "Nessuna immagine disponibile."
+    }
+  }
+}

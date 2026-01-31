@@ -1,0 +1,587 @@
+.playfair-display {
+  font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+:root {
+  /* Theme (override via site-config.json) */
+  --primary: #cfac44;
+  --accent: #cfac44;
+  --header-bg: #ffffff;
+  --header-text-color: #000000;
+  --nav-link-color: #000000;
+  --footer-bg: #333333;
+  --button-hover: #333333;
+
+  /* Sizes */
+  --logo-max-width: 100px;
+
+  /* Hero */
+  --hero-position: 50% 40%;
+  --hero-overlay: 0.25;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+/* ---------------- Header ---------------- */
+
+header {
+  background-color: var(--header-bg);
+  color: var(--header-text-color);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header img.site-logo {
+  max-width: var(--logo-max-width);
+  height: auto;
+  margin: auto 0 auto 0.4em;
+}
+
+header .language-switcher {
+  display: flex;
+  margin: 20px;
+}
+
+/* ---------------- Navigation (mobile overlay) ---------------- */
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--header-bg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none; /* IMPORTANT: don't block clicks when hidden */
+
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+  z-index: 9000;
+}
+
+nav.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+nav a {
+  color: var(--nav-link-color);
+  font-size: 2em;
+  margin: 20px;
+  text-decoration: none;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+nav.active a {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Burger */
+.menu-icon {
+  display: block;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  right: 20px;
+  top: 35px;
+  z-index: 9999;
+}
+
+.menu-icon div {
+  background-color: var(--nav-link-color);
+  height: 4px;
+  margin: 5px 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.menu-icon.cross div:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-icon.cross div:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-icon.cross div:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* ---------------- Hero ---------------- */
+
+.hero {
+  position: relative;
+  height: 100vh;
+  background-size: cover;
+  background-position: var(--hero-position);
+  transition: background-image 1s ease-in-out;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, var(--hero-overlay));
+  pointer-events: none;
+}
+
+/* ---------------- Sections ---------------- */
+
+section {
+  padding: 40px 20px;
+  text-align: center;
+  /* Keep anchored sections visible under the fixed header */
+  scroll-margin-top: 7em;
+}
+
+#intro {
+  padding: 20px 40px;
+  font-size: 1em;
+  line-height: 1.6;
+  margin: 2em auto;
+}
+
+#intro-stanze {
+  padding: 20px 40px;
+  background-color: rgba(199, 158, 91, 0.2);
+  font-size: 1em;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+}
+
+#intro-stanze > div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.room-service {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  margin: 10px;
+  flex: 1;
+  min-height: 200px;
+}
+
+.room-service .service-icon {
+  font-size: 50px;
+  margin-bottom: 10px;
+}
+
+.room-service h3 {
+  margin: 10px 0;
+  font-size: 1.2em;
+}
+
+.room-service p {
+  margin: 0;
+  font-size: 1em;
+}
+
+/* ---------------- Rooms slider ---------------- */
+
+#slider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgba(199, 158, 91, 0.2);
+}
+
+.slider-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
+  scroll-snap-type: x mandatory;
+}
+
+.card-slider {
+  display: flex;
+}
+
+.card {
+  position: relative;
+  color: white;
+  flex: 0 0 400px;
+  margin: 20px;
+  padding: 20px;
+  background-size: cover;
+  background-position: center;
+  height: 18em;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  scroll-snap-align: start;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 0;
+  pointer-events: none; /* IMPORTANT: don't steal clicks */
+}
+
+.card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.card:hover::before {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* ---------------- Booking / Map ---------------- */
+
+#prenota {
+  padding: 20px 40px;
+  font-size: 1em;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  margin: 2em auto;
+}
+
+#map {
+  padding: 20px 40px;
+}
+
+#mapid {
+  width: 100%;
+  height: 400px;
+}
+
+/* ---------------- Testimonials ---------------- */
+
+#testimonials {
+  background-color: rgba(199, 158, 91, 0.2);
+}
+
+.testimonials-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.testimonial-item {
+  flex: 1 1 calc(50% - 20px);
+  margin: 10px;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  height: 200px;
+  box-sizing: border-box;
+}
+
+/* ---------------- Contact ---------------- */
+
+#contact {
+  margin: 1em auto;
+}
+
+.contact-boxes {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+
+.contact-box {
+  flex: 1;
+  min-width: 200px;
+  margin: 10px;
+  padding: 20px;
+  background-color: white;
+  text-align: center;
+}
+
+.contact-box i {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.contact-box p {
+  margin: 0;
+  font-size: 1em;
+}
+
+.contact-box a {
+  color: black;
+  text-decoration: none;
+}
+
+.contact-box a:hover {
+  text-decoration: underline;
+}
+
+.fa-whatsapp {
+  color: green;
+}
+
+/* ---------------- Footer ---------------- */
+
+footer {
+  background-color: var(--footer-bg);
+  color: white;
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding: 1.2em;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 200px;
+  margin: auto;
+}
+
+.footer-section p {
+  margin: 5px 0;
+}
+
+.footer-section a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.footer-section a:hover {
+  text-decoration: underline;
+}
+/* ---------------- Gallery overlay ---------------- */
+
+.gallery {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    z-index: 9001;
+    overflow: auto; /* Permette lo scroll se molte immagini */
+}
+
+.gallery.open {
+    display: block;
+}
+
+.gallery-content {
+    padding: 60px 20px 20px; /* Spazio per il bottone di chiusura */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.gallery-images {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 15px;
+}
+
+.gallery-images img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.gallery-images img:hover {
+    transform: scale(1.02);
+}
+
+.gallery-empty {
+    text-align: center;
+    padding: 40px;
+    color: #666;
+    font-size: 1.2em;
+}
+.close {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-size: 36px; /* Ancora più grande */
+    background: transparent;
+    color: #222; /* Nero leggermente più morbido */
+    border: none;
+    cursor: pointer;
+    z-index: 9002;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    font-weight: 300; /* Più leggero */
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.close:hover {
+    color: #000; /* Nero pieno al hover */
+    transform: scale(1.1); /* Leggero ingrandimento */
+}
+
+.close:active {
+    transform: scale(0.95); /* Effetto click */
+}
+/* ---------------- Language switchers ---------------- */
+
+.language-switcher {
+  background: transparent;
+  border-radius: 8px;
+  padding: 4px 8px;
+}
+
+.language-switcher select {
+  color: var(--header-text-color);
+  background: transparent;
+  text-align: center;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 10px;
+  margin: 0 2px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.language-switcher select:focus {
+  outline: none;
+}
+
+/* By default show only the top select */
+.language-switcher-menu {
+  display: none;
+}
+
+/* ---------------- Responsive ---------------- */
+
+@media (min-width: 768px) {
+  .menu-icon {
+    display: none;
+  }
+
+  nav {
+    position: static;
+    background-color: var(--header-bg);
+    flex-direction: row;
+    justify-content: center;
+    min-height: 6em;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    width: auto;
+    height: auto;
+  }
+
+  nav a {
+    opacity: 1;
+    transform: translateY(0);
+    font-size: 1.2em;
+    color: var(--nav-link-color);
+  }
+
+  nav a:hover {
+    color: var(--accent);
+  }
+
+  .testimonial-item {
+    height: fit-content;
+  }
+
+  #slider {
+    flex-direction: row !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .testimonial-item,
+  .room-service {
+    width: calc(33.33% - 40px);
+  }
+
+  .room-service {
+    width: calc(25% - 40px);
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    min-height: 6em;
+  }
+
+  /* Only on mobile: hide the top select, show the menu select */
+  .language-switcher {
+    display: none !important;
+  }
+
+  .language-switcher-menu {
+    display: block;
+    margin-top: 20px;
+    padding-top: 10px;
+    border-top: 1px solid var(--accent);
+    text-align: center;
+  }
+
+  .language-switcher-menu select {
+    width: 100%;
+    max-width: 220px;
+    margin: 0 auto;
+    display: block;
+    color: var(--nav-link-color);
+    background: transparent;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 1.1em;
+    font-weight: 500;
+    text-align: center;
+    box-shadow: none;
+  }
+
+  #intro-stanze > div {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    margin-bottom: 0.8em;
+  }
+
+  .room-service {
+    width: 100%;
+    min-height: 100px;
+  }
+}
