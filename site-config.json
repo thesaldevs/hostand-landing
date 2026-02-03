@@ -20,7 +20,7 @@
     "folder": "img/hero",
     "start": 0,
     "count": 10,
-    "pattern": "{index}.jpg.webp",
+    "pattern": "{index}.webp",
     "intervalMs": 3000,
     "position": "50% 40%",
     "overlayOpacity": 0.25
@@ -56,22 +56,22 @@
       "id": "classic-villa",
       "titleKey": "apt_one",
       "descKey": "apt_one_desc",
-      "coverImage": "img/rooms/classic-villa/0.jpg.webp",
-      "gallery": { "folder": "img/rooms/classic-villa", "start": 0, "count": 61, "pattern": "{index}.jpg.webp" }
+      "coverImage": "img/rooms/classic-villa/0.webp",
+      "gallery": { "folder": "img/rooms/classic-villa", "start": 0, "count": 61, "pattern": "{index}.webp" }
     },
     {
       "id": "superior-villa",
       "titleKey": "apt_two",
       "descKey": "apt_two_desc",
-      "coverImage": "img/rooms/superior-villa/0.jpg.webp",
-      "gallery": { "folder": "img/rooms/superior-villa", "start": 0, "count": 34, "pattern": "{index}.jpg.webp" }
+      "coverImage": "img/rooms/superior-villa/0.webp",
+      "gallery": { "folder": "img/rooms/superior-villa", "start": 0, "count": 34, "pattern": "{index}.webp" }
     },
     {
       "id": "classic-villa-with-terrace",
       "titleKey": "apt_three",
       "descKey": "apt_three_desc",
-      "coverImage": "img/rooms/classic-villa-with-terrace/0.jpg.webp",
-      "gallery": { "folder": "img/rooms/classic-villa-with-terrace", "start": 0, "count": 30, "pattern": "{index}.jpg.webp" }
+      "coverImage": "img/rooms/classic-villa-with-terrace/0.webp",
+      "gallery": { "folder": "img/rooms/classic-villa-with-terrace", "start": 0, "count": 30, "pattern": "{index}.webp" }
     }
   ],
 

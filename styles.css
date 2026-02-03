@@ -414,12 +414,15 @@ footer {
 }
 
 .gallery-images img {
+    display: block;
     width: 100%;
     height: auto;
+    content-visibility: auto; /* Il browser non renderizza ciò che è fuori schermo */
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
 }
+
 
 .gallery-images img:hover {
     transform: scale(1.02);

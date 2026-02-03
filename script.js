@@ -552,45 +552,48 @@ function initHero(config) {
   if (!heroEl) return;
 
   let images = [];
-
-  // NEW: folder + pattern support
   if (config.hero?.folder) {
     const start = Number.isFinite(config.hero.start) ? config.hero.start : 0;
     const count = Number.isFinite(config.hero.count) ? config.hero.count : 0;
     const pattern = config.hero.pattern || '{index}.webp';
-
     for (let i = start; i < start + count; i++) {
-      images.push(
-        `${config.hero.folder}/${pattern.replace('{index}', i)}`
-      );
+      images.push(`${config.hero.folder}/${pattern.replace('{index}', i)}`);
     }
   } else {
-    // fallback (old behavior)
     images = safeArray(config?.hero?.images);
   }
 
   if (!images.length) return;
 
-  // preload
-  images.forEach((src) => {
-    const img = new Image();
-    img.src = src;
-  });
-
   let idx = 0;
 
-  const setImage = () => {
-    heroEl.style.backgroundImage = `url('${images[idx]}')`;
-    idx = (idx + 1) % images.length;
+  // 1. Carica SOLO la prima immagine immediatamente
+  const firstImg = new Image();
+  firstImg.src = images[0];
+  firstImg.onload = () => {
+    heroEl.style.backgroundImage = `url('${images[0]}')`;
+    heroEl.classList.add('fade-in'); // Aggiungi una transizione fluida via CSS
   };
 
-  setImage();
+  // 2. Funzione per il precaricamento intelligente (una alla volta)
+  const preloadNext = (index) => {
+    if (index >= images.length) return;
+    const img = new Image();
+    img.src = images[index];
+    img.onload = () => preloadNext(index + 1); // Carica la successiva solo quando questa è pronta
+  };
+
+  // Avvia il precaricamento della seconda immagine dopo un piccolo delay
+  setTimeout(() => preloadNext(1), 2000);
+
+  const setImage = () => {
+    idx = (idx + 1) % images.length;
+    // Crea un effetto cross-fade invece di un cambio secco
+    heroEl.style.backgroundImage = `url('${images[idx]}')`;
+  };
 
   if (heroIntervalId) clearInterval(heroIntervalId);
-  heroIntervalId = setInterval(
-    setImage,
-    config.hero.intervalMs || 5000
-  );
+  heroIntervalId = setInterval(setImage, config.hero.intervalMs || 5000);
 }
 function getRoomGalleryUrls(room) {
     if (!room) return [];
@@ -605,7 +608,7 @@ function getRoomGalleryUrls(room) {
     if (gallery.folder && gallery.count) {
         const urls = [];
         for (let i = 0; i < gallery.count; i++) {
-            const pattern = gallery.pattern || '{index}.jpg.webp';
+            const pattern = gallery.pattern || '{index}.webp';
             urls.push(`${gallery.folder}/${pattern.replace('{index}', i)}`);
         }
         return urls;
@@ -635,15 +638,26 @@ function openGallery(room) {
         applyI18n(currentLang);
         return;
     }
-
-    // Carica TUTTE le immagini insieme
     urls.forEach(src => {
+        const container = document.createElement('div');
+        container.className = 'img-container';
+        
+        // Aggiungiamo uno spinner CSS
+        const loader = document.createElement('div');
+        loader.className = 'loader'; 
+        
         const img = document.createElement('img');
         img.src = src;
-        img.loading = 'lazy'; // Mantieni lazy loading per performance
-        img.alt = room.titleKey ? getTranslation(room.titleKey) : 'Gallery image';
-        imagesWrap.appendChild(img);
+        img.loading = 'lazy';
+        
+        // Quando l'immagine è pronta, nascondiamo il loader
+        img.onload = () => loader.style.display = 'none';
+
+        container.appendChild(loader);
+        container.appendChild(img);
+        imagesWrap.appendChild(container);
     });
+   
 }
 
 // Funzione helper per ottenere traduzioni
