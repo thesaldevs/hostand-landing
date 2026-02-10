@@ -1,100 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="img/favicon/favicon.ico">
-  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
-  <link rel="manifest" href="site.webmanifest">
+
   <meta name="theme-color" content="#ffffff">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Manrope:wght@200..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Anybody:ital,wdth,wght@0,50..150,100..900;1,50..150,100..900&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-<link rel="preload" as="image" href="img/hero/0.webp" fetchpriority="high">
+
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 
   <title></title>
 </head>
 
-<body class="playfair-display">
+<body class="anybody-moomin">
   <header id="siteHeader">
-    <img id="siteLogo" src="" alt="" class="site-logo" />
-
-    <nav id="navbar" aria-label="Main navigation"></nav>
-
-    <div class="language-switcher">
-      <select id="languageSelectTop" aria-label="Language"></select>
-    </div>
-
-    <div class="menu-icon" id="menuIcon" role="button" tabindex="0" aria-label="Menu" aria-expanded="false"
-      aria-controls="navbar">
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
+      <div class="menu-icon" id="menuIcon" role="button" tabindex="0" aria-label="Menu" aria-expanded="false"
+        aria-controls="navbar">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div><h1>hostand</h1></div>
+      <div class="language-switcher">
+        <select id="languageSelectTop" aria-label="Language"></select>
+      </div>
+      <nav id="navbar" aria-label="Main navigation"></nav> 
   </header>
 
   <main>
-    <div class="hero" id="hero"></div>
-    <section id="intro"></section>
-    <section id="intro-stanze"></section>
-
-  <section id="slider">
-    <div class="slider-container">
-      <div class="card-slider">
-        <div class="card card-deluxe-loft-two-levels" data-folder="img/rooms/classic-villa">
-          <div class="card-media">
-            <img class="card-img" src="img/rooms/classic-villa/0.webp" alt="" loading="lazy" decoding="async" />
-          </div>
-          <div class="card-content">
-            <h3 data-i18n="apt_one"></h3>
-            <p data-i18n="apt_one_desc"></p>
-          </div>
-        </div>
-        <div class="card card-classic-apt-terrace" data-folder="img/rooms/superior-villa">
-          <div class="card-media">
-            <img class="card-img" src="img/rooms/superior-villa/0.webp" alt="" loading="lazy" decoding="async" />
-          </div>
-          <div class="card-content">
-            <h3 data-i18n="apt_two"></h3>
-            <p data-i18n="apt_two_desc"></p>
-          </div>
-        </div>
-        <div class="card card-deluxe-apt-rooftop-terrace-access" data-folder="img/rooms/classic-villa-with-terrace">
-          <div class="card-media">
-            <img class="card-img" src="img/rooms/classic-villa-with-terrace/0.webp" alt="" loading="lazy" decoding="async" />
-          </div>
-          <div class="card-content">
-            <h3 data-i18n="apt_three"></h3>
-            <p data-i18n="apt_three_desc"></p>
-          </div>
-        </div>
+    <div class="hero" id="hero" > 
+    <div class="hero-content"> 
+      <p data-i18n="hero-title" class="hero-title"></p>
+      <p data-i18n="hero-subtitle" class="hero-subtitle"></p>
       </div>
     </div>
-  </section>
-  <section id="prenota"></section>
-  <section id="map"></section>
-  <section id="testimonials"></section>
-  <section id="contact"></section>
-</main>
+    <section id="contact"></section>
+  </main>
   <footer id="siteFooter"></footer>
-
-  <!-- Gallery overlay -->
-  <div id="gallery" class="gallery" aria-hidden="true">
-    <button class="close" id="galleryClose" type="button" aria-label="Close gallery">&larr;</button>
-    <div class="gallery-content">
-      <div id="galleryImages" class="gallery-images"></div>
-    </div>
-  </div>
-
   <!-- External libs (no inline JS) -->
   <script src="https://unpkg.com/leaflet/dist/leaflet.js" defer></script>
   <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
