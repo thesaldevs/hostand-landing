@@ -97,7 +97,8 @@ nav {
   nav a {
     color: white;
     font-size: 1.6rem;
-    margin: 1rem 0;
+    margin: 1rem;
+    text-align: center;
     text-decoration: none;
     opacity: 1;
     transform: none;
@@ -339,4 +340,37 @@ footer {
   display: none;
 }
 
+.section-intro {
+  max-width: 700px;
+  margin: 0 auto 2rem;
+}
 
+.services-list {
+  list-style: none;
+  padding: 0;
+}
+
+.services-list li {
+  margin: 0.6rem 0;
+}
+
+.cta-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
+}
+
+.cta {
+  padding: 2rem;
+  border: 1px solid var(--accent);
+}
+
+.btn-business {
+  background: black;
+  color: white;
+}
+
+.btn-travel {
+  background: var(--accent);
+  color: black;
+}

@@ -23,11 +23,32 @@
   },
 
   "nav": [
-    { "href": "#slider", "labelKey": "nav_apartments" },
-    { "href": "#prenota", "labelKey": "nav_book" },
-    { "href": "#testimonials", "labelKey": "nav_services" },
-    { "href": "#contact", "labelKey": "nav_contact" }
+    { "href": "#business", "labelKey": "nav_business" },
+    { "href": "#travel", "labelKey": "nav_travel" },
+    { "href": "#about", "labelKey": "nav_about" },
+    { "href": "#contacts", "labelKey": "nav_contacts" },
+    { "href": "#strategy", "labelKey": "nav_strategy" },
+    { "href": "#reserved", "labelKey": "nav_reserved" }
+
   ],
+"sections": {
+  "business": {
+    "titleKey": "business_title",
+    "introKey": "business_intro",
+    "servicesKey": "business_services"
+  },
+  "travel": {
+    "titleKey": "travel_title",
+    "introKey": "travel_intro"
+  },
+  "about": {
+    "titleKey": "about_title",
+    "contentKey": "about_content"
+  },
+  "strategy": {
+    "titleKey": "strategy_title"
+  }
+},
 
   "contacts": [
     {
@@ -39,8 +60,8 @@
     },
     {
       "icon": { "type": "material", "name": "email" },
-      "label": "7kingsvillas@gmail.com",
-      "href": "mailto:7kingsvillas@gmail.com"
+      "label": "info@hostand.it",
+      "href": "mailto:info@hostand.it"
     }
   ],
 
@@ -52,29 +73,77 @@
     "en": {
       "hero-title": "We enhance properties. <br> We welcome travelers.",
       "hero-subtitle": "Complete solutions for real estate investors and thoughtful stays for those visiting Rome. Double CTA: Business and Travel",
-      "nav_apartments": "Apartments",
-      "nav_book": "Book",
-      "nav_services": "Services",
-      "nav_contact": "Contact us",
+      "nav_business": "Business",
+      "nav_travel": "Travel",
+      "nav_about": "About us",
+      "nav_contacts": "Contacts",
+      "nav_strategy": "Strategy",
+      "nav_reserved": "Reserved Area",
 
       "contact_us": "Contact us",
 
       "no_cookies": "This site does not use cookies",
-      "made_by": "Made with ❤️ by <b>SalDevs</b>"
+      "made_by": "Made with ❤️ by <b>SalDevs</b>",
+
+      "business_title": "HOSTAND BUSINESS",
+      "business_intro": "Complete solutions to enhance income-generating properties.",
+      "business_services": [
+        "Financial consulting",
+        "Profitability analysis",
+        "Real estate brokerage",
+        "Short-term rentals",
+        "Student rentals",
+        "Full property management",
+        "Professional cleaning",
+        "Linen rental",
+        "Maintenance services",
+        "Turnkey tourist renovations"
+      ],
+
+      "travel_title": "HOSTAND TRAVEL",
+      "travel_intro": "Carefully selected apartments, strategic locations and quality assistance.",
+
+      "about_title": "Who we are",
+      "about_content": "Hostand combines real estate expertise with hospitality. We operate in Rome with a clear vision: creating value for investors and quality stays for travelers.",
+
+      "strategy_title": "Strategy"
+      
     },
 
     "it": {
       "hero-title": "Valorizziamo immobili. <br> Accogliamo viaggiatori.",
       "hero-subtitle": "Soluzioni complete per chi investe nel mattone e soggiorni curati per chi visita Roma. CTA doppia: Business e Travel.",
-      "nav_apartments": "Appartamenti",
-      "nav_book": "Prenota",
-      "nav_services": "Servizi",
-      "nav_contact": "Contattaci",
-
+      "nav_business": "Business",
+      "nav_travel": "Travel",
+      "nav_about": "Chi siamo",
+      "nav_contacts": "Contatti",
+      "nav_strategy": "Strategia",
+      "nav_reserved": "Area Riservata",
       "contact_us": "Contattaci",
-
       "no_cookies": "Questo sito non utilizza cookies",
-      "made_by": "Made with ❤️ by <b>SalDevs</b>"
+      "made_by": "Made with ❤️ by <b>SalDevs</b>",
+      "business_title": "HOSTAND BUSINESS",
+      "business_intro": "Soluzioni complete per valorizzare immobili a reddito.",
+      "business_services": [
+        "Consulenza finanziaria",
+        "Analisi di redditività",
+        "Intermediazione immobiliare",
+        "Affitti brevi",
+        "Affitti per studenti",
+        "Gestione completa",
+        "Pulizie professionali",
+        "Noleggio biancheria",
+        "Manutenzioni",
+        "Ristrutturazioni turistiche chiavi in mano"
+      ],
+
+      "travel_title": "HOSTAND TRAVEL",
+      "travel_intro": "Appartamenti selezionati, posizioni strategiche e assistenza di qualità.",
+
+      "about_title": "Chi siamo",
+      "about_content": "Hostand nasce dall’unione tra competenze immobiliari e ospitalità. Operiamo a Roma con una visione chiara: creare valore per chi investe e soggiorni curati per chi viaggia.",
+
+      "strategy_title": "Strategia"
     }
   }
 }

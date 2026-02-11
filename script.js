@@ -135,7 +135,7 @@
   const header = document.getElementById('siteHeader');
   if (!header) return;
 
-  const trigger = 300; // scatta dopo 200px di scroll (regolabile)
+  const trigger = 250;
 
   const onScroll = () => {
     if (window.scrollY > trigger) {
@@ -234,6 +234,85 @@
       wrap.appendChild(box);
     });
   }
+  function buildBusiness(config) {
+  const section = $('#business');
+  if (!section) return;
+
+  const s = config.sections?.business;
+  if (!s) return;
+
+  section.innerHTML = `
+    <h2 data-i18n="${s.titleKey}"></h2>
+    <p data-i18n="${s.introKey}" class="section-intro"></p>
+    <ul class="services-list"></ul>
+  `;
+
+  const ul = section.querySelector('.services-list');
+  const services = cfg.i18n?.[currentLang]?.[s.servicesKey] || [];
+
+  services.forEach(text => {
+    const li = document.createElement('li');
+    li.textContent = text;
+    ul.appendChild(li);
+  });
+}
+
+function buildTravel(config) {
+  const section = $('#travel');
+  if (!section) return;
+
+  const s = config.sections?.travel;
+  if (!s) return;
+
+  section.innerHTML = `
+    <h2 data-i18n="${s.titleKey}"></h2>
+    <p data-i18n="${s.introKey}" class="section-intro"></p>
+    <div class="booking-widget">
+      <!-- Kross Booking widget -->
+    </div>
+  `;
+}
+
+function buildAbout(config) {
+  const section = $('#about');
+  if (!section) return;
+
+  const s = config.sections?.about;
+  if (!s) return;
+
+  section.innerHTML = `
+    <h2 data-i18n="${s.titleKey}"></h2>
+    <p data-i18n="${s.contentKey}" class="about-text"></p>
+  `;
+}
+
+function buildStrategy(config) {
+  const section = $('#strategy');
+  if (!section) return;
+
+  const s = config.sections?.strategy;
+  if (!s) return;
+
+  section.innerHTML = `
+    <h2 data-i18n="${s.titleKey}"></h2>
+
+    <div class="cta-grid">
+      <div class="cta business">
+        <h3>Business</h3>
+        <p>Increase your property value</p>
+      </div>
+
+      <div class="cta travel">
+        <h3>Travel</h3>
+        <p>Discover our apartments</p>
+      </div>
+    </div>
+  `;
+}
+
+
+
+
 
   function buildFooter(config) {
     const footer = $('#siteFooter');
@@ -361,7 +440,10 @@
       buildHeader(cfg);
       buildContact(cfg);
       buildFooter(cfg);
-
+buildBusiness(cfg);
+buildTravel(cfg);
+buildAbout(cfg);
+buildStrategy(cfg);
       // Interactions
       initMenu();
       initHeaderScroll();
