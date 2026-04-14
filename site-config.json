@@ -72,7 +72,8 @@
   "i18n": {
     "en": {
       "hero-title": "We enhance properties. <br> We welcome travelers.",
-      "hero-subtitle": "Complete solutions for real estate investors and thoughtful stays for those visiting Rome. Double CTA: Business and Travel",
+      "hero-subtitle": "For owners who want to earn more, and travelers who expect more.",
+      "double-cta":"How can we help you?",
       "nav_business": "Business",
       "nav_travel": "Travel",
       "nav_about": "About us",
@@ -99,9 +100,9 @@
         "Maintenance services",
         "Turnkey tourist renovations"
       ],
-
-      "travel_title": "HOSTAND TRAVEL",
-      "travel_intro": "Carefully selected apartments, strategic locations and quality assistance.",
+      "business-login": "Log in to your reserved area",
+      "travel_title": "Looking for a place to stay? Find your apartment in Rome",
+      "travel_intro": "Discover our curated properties for a seamless stay, in strategic locations with dedicated guest support.",
 
       "about_title": "Who we are",
       "about_content": "Hostand combines real estate expertise with hospitality. We operate in Rome with a clear vision: creating value for investors and quality stays for travelers.",
@@ -112,7 +113,8 @@
 
     "it": {
       "hero-title": "Valorizziamo immobili. <br> Accogliamo viaggiatori.",
-      "hero-subtitle": "Soluzioni complete per chi investe nel mattone e soggiorni curati per chi visita Roma. CTA doppia: Business e Travel.",
+      "hero-subtitle": "Per valorizzare gli immobili e offrire soggiorni all’altezza delle aspettative.",
+      "double-cta":"Come possiamo aiutarti?",
       "nav_business": "Business",
       "nav_travel": "Travel",
       "nav_about": "Chi siamo",
@@ -122,7 +124,7 @@
       "contact_us": "Contattaci",
       "no_cookies": "Questo sito non utilizza cookies",
       "made_by": "Made with ❤️ by <b>SalDevs</b>",
-      "business_title": "HOSTAND BUSINESS",
+      "business_title": "Sei un proprietario? Metti a reddito il tuo immobile",
       "business_intro": "Soluzioni complete per valorizzare immobili a reddito.",
       "business_services": [
         "Consulenza finanziaria",
@@ -136,9 +138,10 @@
         "Manutenzioni",
         "Ristrutturazioni turistiche chiavi in mano"
       ],
+      "business-login": "Accedi alla tua area riservata",
 
-      "travel_title": "HOSTAND TRAVEL",
-      "travel_intro": "Appartamenti selezionati, posizioni strategiche e assistenza di qualità.",
+      "travel_title": "Cerchi un alloggio? Trova un appartamento a Roma",
+      "travel_intro": "Scopri le nostre strutture selezionate per un soggiorno senza pensieri, posizioni strategiche e assistenza di qualità.",
 
       "about_title": "Chi siamo",
       "about_content": "Hostand nasce dall’unione tra competenze immobiliari e ospitalità. Operiamo a Roma con una visione chiara: creare valore per chi investe e soggiorni curati per chi viaggia.",

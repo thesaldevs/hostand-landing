@@ -245,6 +245,10 @@
     <h2 data-i18n="${s.titleKey}"></h2>
     <p data-i18n="${s.introKey}" class="section-intro"></p>
     <ul class="services-list"></ul>
+    <div> 
+      <p data-i18n="business-login"></p>
+      <a id="loginBtn" class="primary-btn" href="https://hostand.eu/login" target="_blank" rel="noopener"> Log in </a>    
+    </div>
   `;
 
   const ul = section.querySelector('.services-list');
@@ -255,64 +259,69 @@
     li.textContent = text;
     ul.appendChild(li);
   });
-}
 
-function buildTravel(config) {
-  const section = $('#travel');
+  }
+
+  function buildReviews(config) {
+  const section = document.getElementById('reviews');
   if (!section) return;
 
-  const s = config.sections?.travel;
-  if (!s) return;
+  const s = config.sections?.reviews;
 
   section.innerHTML = `
-    <h2 data-i18n="${s.titleKey}"></h2>
-    <p data-i18n="${s.introKey}" class="section-intro"></p>
-    <div class="booking-widget">
-      <!-- Kross Booking widget -->
-    </div>
+    <h2 data-i18n="${s?.titleKey || 'reviews_title'}">
+      What our guests say
+    </h2>
+    <div class="reviews-container"></div>
   `;
+
+  const container = section.querySelector('.reviews-container');
+  const reviews = config.reviews || [];
+
+  reviews.forEach(r => {
+    const card = document.createElement('div');
+    card.className = 'review-card';
+
+    const stars = '★'.repeat(r.rating || 5);
+
+    card.innerHTML = `
+      <div class="review-rating">${stars}</div>
+      <div class="review-text">"${r.text}"</div>
+      <div class="review-source">— ${r.source || 'Verified guest'}</div>
+    `;
+
+    container.appendChild(card);
+  });
 }
 
-function buildAbout(config) {
-  const section = $('#about');
-  if (!section) return;
+  function buildTravel(config) {
+    const section = $('#travel');
+    if (!section) return;
 
-  const s = config.sections?.about;
-  if (!s) return;
+    const s = config.sections?.travel;
+    if (!s) return;
 
-  section.innerHTML = `
-    <h2 data-i18n="${s.titleKey}"></h2>
-    <p data-i18n="${s.contentKey}" class="about-text"></p>
-  `;
-}
-
-function buildStrategy(config) {
-  const section = $('#strategy');
-  if (!section) return;
-
-  const s = config.sections?.strategy;
-  if (!s) return;
-
-  section.innerHTML = `
-    <h2 data-i18n="${s.titleKey}"></h2>
-
-    <div class="cta-grid">
-      <div class="cta business">
-        <h3>Business</h3>
-        <p>Increase your property value</p>
+    section.innerHTML = `
+      <h2 data-i18n="${s.titleKey}"></h2>
+      <p data-i18n="${s.introKey}" class="section-intro"></p>
+      <div class="booking-widget">
+        <!-- Kross Booking widget -->
       </div>
+    `;
+  }
 
-      <div class="cta travel">
-        <h3>Travel</h3>
-        <p>Discover our apartments</p>
-      </div>
-    </div>
-  `;
-}
+  function buildAbout(config) {
+    const section = $('#about');
+    if (!section) return;
 
+    const s = config.sections?.about;
+    if (!s) return;
 
-
-
+    section.innerHTML = `
+      <h2 data-i18n="${s.titleKey}"></h2>
+      <p data-i18n="${s.contentKey}" class="about-text"></p>
+    `;
+  }
 
   function buildFooter(config) {
     const footer = $('#siteFooter');
@@ -440,10 +449,10 @@ function buildStrategy(config) {
       buildHeader(cfg);
       buildContact(cfg);
       buildFooter(cfg);
-buildBusiness(cfg);
-buildTravel(cfg);
-buildAbout(cfg);
-buildStrategy(cfg);
+      buildReviews(cfg);
+      buildBusiness(cfg);
+      buildTravel(cfg);
+      buildAbout(cfg);
       // Interactions
       initMenu();
       initHeaderScroll();
