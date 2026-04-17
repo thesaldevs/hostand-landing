@@ -71,6 +71,8 @@
     currentLang = lang;
     applyI18n(lang);
     syncLanguageSelects(lang);
+    reloadKrossWidget(lang);
+    buildAbout(cfg);
   }
 
   function buildHeader(config) {
@@ -234,65 +236,48 @@
       wrap.appendChild(box);
     });
   }
+  
   function buildBusiness(config) {
-  const section = $('#business');
-  if (!section) return;
+    const section = $('#business');
+    if (!section) return;
 
-  const s = config.sections?.business;
-  if (!s) return;
+    const s = config.sections?.business;
+    if (!s) return;
 
-  section.innerHTML = `
-    <h2 data-i18n="${s.titleKey}"></h2>
-    <p data-i18n="${s.introKey}" class="section-intro"></p>
-    <ul class="services-list"></ul>
-    <div> 
-      <p data-i18n="business-login"></p>
-      <a id="loginBtn" class="primary-btn" href="https://hostand.eu/login" target="_blank" rel="noopener"> Log in </a>    
-    </div>
-  `;
+    section.innerHTML = `
+      <h2 data-i18n="${s.titleKey}"></h2>
+      <p data-i18n="${s.introKey}" class="section-intro"></p>
+      <div class="business-layout">
+        <div class="business-main"> 
+          <ul class="services-list"></ul>
+        </div>
 
-  const ul = section.querySelector('.services-list');
-  const services = cfg.i18n?.[currentLang]?.[s.servicesKey] || [];
-
-  services.forEach(text => {
-    const li = document.createElement('li');
-    li.textContent = text;
-    ul.appendChild(li);
-  });
-
-  }
-
-  function buildReviews(config) {
-  const section = document.getElementById('reviews');
-  if (!section) return;
-
-  const s = config.sections?.reviews;
-
-  section.innerHTML = `
-    <h2 data-i18n="${s?.titleKey || 'reviews_title'}">
-      What our guests say
-    </h2>
-    <div class="reviews-container"></div>
-  `;
-
-  const container = section.querySelector('.reviews-container');
-  const reviews = config.reviews || [];
-
-  reviews.forEach(r => {
-    const card = document.createElement('div');
-    card.className = 'review-card';
-
-    const stars = '★'.repeat(r.rating || 5);
-
-    card.innerHTML = `
-      <div class="review-rating">${stars}</div>
-      <div class="review-text">"${r.text}"</div>
-      <div class="review-source">— ${r.source || 'Verified guest'}</div>
+        <aside id="business-login" class="business-login-card">
+          <h3 data-i18n="business-login-title"></h3>
+          <p data-i18n="business-login-text" class="business-login-text"></p>
+          <a
+            id="loginBtn"
+            class="primary-btn business-login-btn"
+            href="https://hostand.eu/login"
+            target="_blank"
+            rel="noopener"
+            data-i18n="business-login"
+          ></a>
+        </aside>
+      </div>
     `;
 
-    container.appendChild(card);
-  });
-}
+    const ul = section.querySelector('.services-list');
+    const services = cfg.i18n?.[currentLang]?.[s.servicesKey] || [];
+
+    services.forEach(text => {
+      const li = document.createElement('li');
+      li.textContent = text;
+      ul.appendChild(li);
+    });
+
+    applyI18n(currentLang);
+  }
 
   function buildTravel(config) {
     const section = $('#travel');
@@ -304,10 +289,142 @@
     section.innerHTML = `
       <h2 data-i18n="${s.titleKey}"></h2>
       <p data-i18n="${s.introKey}" class="section-intro"></p>
-      <div class="booking-widget">
-        <!-- Kross Booking widget -->
+      <div class="kross-container"></div>
+    `;
+  }
+
+  function reloadKrossWidget(lang) {
+    if (!cfg?.krossWidget) return;
+
+    const krossCfg = cfg.krossWidget || {};
+    const src = krossCfg.src;
+    if (!src) return;
+
+    const containerSelector = krossCfg.containerSelector || '.kross-container';
+    const container = document.querySelector(containerSelector);
+    if (!container) return;
+
+    // attributes on container (including language)
+    const attrs = Object.assign({}, krossCfg.containerAttributes || {});
+    if (lang) attrs['data-lang'] = lang;
+    Object.keys(attrs).forEach((key) => container.setAttribute(key, attrs[key]));
+
+    // reset widget
+    container.innerHTML = '';
+
+    const oldScript = document.getElementById('kross-script');
+    if (oldScript) oldScript.remove();
+
+    const script = document.createElement('script');
+    script.id = 'kross-script';
+    script.type = 'text/javascript';
+    script.defer = true;
+    script.src = src;
+    document.body.appendChild(script);
+
+    // optional CSS
+    if (krossCfg.css) {
+      let link = document.getElementById('kross-css');
+      if (link) link.remove();
+
+      link = document.createElement('link');
+      link.id = 'kross-css';
+      link.rel = 'stylesheet';
+      link.href = krossCfg.css;
+      link.type = 'text/css';
+      link.media = 'all';
+      document.head.appendChild(link);
+    }
+  }
+
+  function buildStudents(config) {
+    const section = $('#students');
+    if (!section) return;
+
+    const s = config.sections?.students;
+    if (!s) return;
+    section.innerHTML = `
+      <div class="students-centered">
+        <h2 data-i18n="${s.titleKey}"></h2>
+        <p data-i18n="${s.introKey}" class="section-intro"></p>
+
+        <div class="students-form-card">
+          <h3 data-i18n="students_form_title"></h3>
+
+          <form
+            action="https://formspree.io/f/xrerqggv"
+            method="POST"
+            class="students-form"
+          >
+            <input type="hidden" name="_subject" value="Hostand Students - Nuova richiesta" />
+            <input type="text" name="_gotcha" class="hp-field" tabindex="-1" autocomplete="off" />
+
+            <input
+              type="text"
+              name="name"
+              data-i18n="form_name"
+              required
+            />
+            <input
+              type="email"
+              name="email"
+              data-i18n="form_email"
+              required
+            />
+
+            <div class="students-period-grid">
+              <div class="form-field">
+                <label for="periodFrom" data-i18n="form_period_from"></label>
+                <input
+                  id="periodFrom"
+                  type="date"
+                  name="period_from"
+                  required
+                />
+            </div>
+
+            <div class="form-field">
+              <label for="periodTo" data-i18n="form_period_to"></label>
+              <input
+                id="periodTo"
+                type="date"
+                name="period_to"
+                required
+              />
+            </div>
+          </div>
+
+            <input
+              type="text"
+              name="requested_area"
+              data-i18n="form_requested_area"
+              required
+            />
+
+            <input
+              type="tel"
+              name="phone"
+              data-i18n="form_phone"
+              required
+            />
+
+            <textarea
+              name="request_description"
+              rows="5"
+              data-i18n="form_request_description"
+              required
+            ></textarea>
+
+            <button
+              type="submit"
+              class="students-form-btn"
+              data-i18n="form_submit"
+            ></button>
+          </form>
+        </div>
       </div>
     `;
+    applyI18n(currentLang);
   }
 
   function buildAbout(config) {
@@ -316,11 +433,43 @@
 
     const s = config.sections?.about;
     if (!s) return;
+   
+    const lang = currentLang || config.defaultLang || 'en';
+    const reviews = config.reviews?.[lang] || config.reviews?.[config.defaultLang] || [];
+
+    const duplicatedReviews = [...reviews, ...reviews];
 
     section.innerHTML = `
+
       <h2 data-i18n="${s.titleKey}"></h2>
       <p data-i18n="${s.contentKey}" class="about-text"></p>
+      <div class="reviews-marquee">
+        <div class="reviews-track"></div>
+      </div>
     `;
+
+    const track = section.querySelector('.reviews-track');
+    if (!track) return;
+
+    duplicatedReviews.forEach((review) => {
+      const card = document.createElement('article');
+      card.className = 'review-card';
+
+      card.innerHTML = `
+        <div class="review-card-inner">
+          <p class="review-text">${review.text || ''}</p>
+          <div class="review-meta">
+            <p class="review-name">${review.name || ''}</p>
+            <p class="review-role" data-i18n="${review.roleKey || ''}"></p>
+          </div>
+        </div>
+      `;
+
+      track.appendChild(card);
+    });
+
+    // Applica subito le traduzioni anche agli elementi appena creati
+    applyI18n(lang);
   }
 
   function buildFooter(config) {
@@ -449,10 +598,10 @@
       buildHeader(cfg);
       buildContact(cfg);
       buildFooter(cfg);
-      buildReviews(cfg);
       buildBusiness(cfg);
       buildTravel(cfg);
       buildAbout(cfg);
+      buildStudents(cfg);
       // Interactions
       initMenu();
       initHeaderScroll();

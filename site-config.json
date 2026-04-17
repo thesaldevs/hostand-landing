@@ -9,7 +9,7 @@
 
   "theme": {
     "primaryColor": "black",
-    "accentColor": "#cfac44",
+    "accentColor":  "rgb(248, 126, 5)",
     "headerBg": "rgba(255,255,255,1)",
     "logoMaxWidth": "100px"
   },
@@ -22,13 +22,22 @@
     "position": "50% 50%"
   },
 
+  "krossWidget": {  
+      "src": "https://data.krossbooking.com/widget/v6/hostand/2.js",
+      "css": "https://data.krossbooking.com/widget/v6/hostand/2.css",
+      "containerSelector": ".kross-container",
+      "containerAttributes": {
+        "data-lang": "en",
+        "data-target": "_blank"
+      }
+    },
   "nav": [
-    { "href": "#business", "labelKey": "nav_business" },
-    { "href": "#travel", "labelKey": "nav_travel" },
     { "href": "#about", "labelKey": "nav_about" },
-    { "href": "#contacts", "labelKey": "nav_contacts" },
-    { "href": "#strategy", "labelKey": "nav_strategy" },
-    { "href": "#reserved", "labelKey": "nav_reserved" }
+    { "href": "#travel", "labelKey": "nav_travel" },
+    { "href": "#business", "labelKey": "nav_business" },
+    { "href": "#business-login", "labelKey": "nav_reserved" },
+    { "href": "#students", "labelKey": "nav_students" },
+    { "href": "#contact", "labelKey": "nav_contacts" }
 
   ],
 "sections": {
@@ -45,8 +54,9 @@
     "titleKey": "about_title",
     "contentKey": "about_content"
   },
-  "strategy": {
-    "titleKey": "strategy_title"
+  "students": {
+    "titleKey": "students_title",
+    "introKey": "students_intro"  
   }
 },
 
@@ -76,18 +86,20 @@
       "double-cta":"How can we help you?",
       "nav_business": "Business",
       "nav_travel": "Travel",
+      "nav_students": "Students",
       "nav_about": "About us",
       "nav_contacts": "Contacts",
-      "nav_strategy": "Strategy",
       "nav_reserved": "Reserved Area",
+      "students_title": "Accommodation for students",
+      "students_intro": "Flexible housing solutions for students looking for a comfortable stay in Rome, with practical support and carefully selected apartments.",
 
       "contact_us": "Contact us",
 
       "no_cookies": "This site does not use cookies",
       "made_by": "Made with ❤️ by <b>SalDevs</b>",
 
-      "business_title": "HOSTAND BUSINESS",
-      "business_intro": "Complete solutions to enhance income-generating properties.",
+      "business_title": "Are you a property owner? Earn income from your property",
+      "business_intro": "Complete solutions to maximize the value of income-generating properties.",
       "business_services": [
         "Financial consulting",
         "Profitability analysis",
@@ -100,26 +112,41 @@
         "Maintenance services",
         "Turnkey tourist renovations"
       ],
-      "business-login": "Log in to your reserved area",
       "travel_title": "Looking for a place to stay? Find your apartment in Rome",
       "travel_intro": "Discover our curated properties for a seamless stay, in strategic locations with dedicated guest support.",
 
-      "about_title": "Who we are",
-      "about_content": "Hostand combines real estate expertise with hospitality. We operate in Rome with a clear vision: creating value for investors and quality stays for travelers.",
-
-      "strategy_title": "Strategy"
+      "about_title": "What our customers say",
+      "about_content": "We are what they say about us.",
+      "review_owner": "Owner",
+      "review_tenant": "Tenant",
+      "strategy_title": "Strategy",
+      "business-login-badge": "Reserved Area",
+      "business-login-title": "Already a client?",
+      "business-login-text": "Access your reserved area to check documents, updates and dedicated information for your property.",
+      "business-login": "Log in",
+      "students_form_title": "Request information",
+      "form_name": "Name",
+      "form_email": "Email",
+      "form_period_from": "From",
+      "form_period_to": "To",
+      "form_requested_area": "Requested area",
+      "form_phone": "Phone number",
+      "form_request_description": "Request description",
+      "form_submit": "Send request"
       
     },
 
     "it": {
       "hero-title": "Valorizziamo immobili. <br> Accogliamo viaggiatori.",
       "hero-subtitle": "Per valorizzare gli immobili e offrire soggiorni all’altezza delle aspettative.",
-      "double-cta":"Come possiamo aiutarti?",
+      "double-cta": "Come possiamo aiutarti?",
+      "students_title": "Soluzioni abitative per studenti",
+      "students_intro": "Proposte abitative flessibili per studenti che cercano un soggiorno comodo a Roma, con supporto pratico e appartamenti selezionati.",
       "nav_business": "Business",
       "nav_travel": "Travel",
+      "nav_students": "Studenti",
       "nav_about": "Chi siamo",
       "nav_contacts": "Contatti",
-      "nav_strategy": "Strategia",
       "nav_reserved": "Area Riservata",
       "contact_us": "Contattaci",
       "no_cookies": "Questo sito non utilizza cookies",
@@ -138,15 +165,136 @@
         "Manutenzioni",
         "Ristrutturazioni turistiche chiavi in mano"
       ],
-      "business-login": "Accedi alla tua area riservata",
 
       "travel_title": "Cerchi un alloggio? Trova un appartamento a Roma",
       "travel_intro": "Scopri le nostre strutture selezionate per un soggiorno senza pensieri, posizioni strategiche e assistenza di qualità.",
 
-      "about_title": "Chi siamo",
-      "about_content": "Hostand nasce dall’unione tra competenze immobiliari e ospitalità. Operiamo a Roma con una visione chiara: creare valore per chi investe e soggiorni curati per chi viaggia.",
+      "about_title": "Cosa dicono i nostri clienti",
+      "about_content": "Siamo ciò che dicono di noi.",
+      "review_owner": "Proprietario",
+      "review_tenant": "Affittuario",
+      "strategy_title": "Strategia",
+      "business-login-badge": "Area Riservata",
+      "business-login-title": "Sei già cliente?",
+      "business-login-text": "Accedi alla tua area riservata per consultare documenti, aggiornamenti e informazioni dedicate al tuo immobile.",
+      "business-login": "Accedi",
+      "students_form_title": "Richiedi informazioni",
+      "form_name": "Nome",
+      "form_email": "Email",
+      "form_period_from": "Periodo dal",
+      "form_period_to": "Periodo al",
+      "form_requested_area": "Zona richiesta",
+      "form_phone": "N° Telefono",
+      "form_request_description": "Descrizione richiesta",
+      "form_submit": "Invia richiesta"
 
-      "strategy_title": "Strategia"
     }
-  }
+  },
+
+  "reviews": {
+  "en": [
+    {
+      "name": "Giulia",
+      "roleKey": "review_owner",
+      "text": "Professional, precise, and always available. My apartment performs much better now."
+    },
+    {
+      "name": "Marco",
+      "roleKey": "review_tenant",
+      "text": "Smooth booking, clear communication, and a very well-kept apartment."
+    },
+    {
+      "name": "Elena",
+      "roleKey": "review_owner",
+      "text": "I finally found a team that manages everything without creating stress."
+    },
+    {
+      "name": "David",
+      "roleKey": "review_tenant",
+      "text": "Great location, easy check-in, and support was quick whenever I needed help."
+    },
+    {
+      "name": "Sofia",
+      "roleKey": "review_owner",
+      "text": "The setup was fast and the results were visible from the first months."
+    },
+    {
+      "name": "Luca",
+      "roleKey": "review_tenant",
+      "text": "The stay was exactly as described, clean, comfortable, and well organized."
+    },
+    {
+      "name": "Martina",
+      "roleKey": "review_owner",
+      "text": "Transparent reporting and excellent care for the property and the guests."
+    },
+    {
+      "name": "Claire",
+      "roleKey": "review_tenant",
+      "text": "Everything felt simple and reliable, from arrival to departure."
+    },
+    {
+      "name": "Andrea",
+      "roleKey": "review_owner",
+      "text": "A serious partner for anyone who wants to improve returns and protect the asset."
+    },
+    {
+      "name": "Thomas",
+      "roleKey": "review_tenant",
+      "text": "Beautiful apartment, responsive team, and a really pleasant overall experience."
+    }
+  ],
+  "it": [
+    {
+      "name": "Giulia",
+      "roleKey": "review_owner",
+      "text": "Professionali, precisi e sempre disponibili. Il mio appartamento oggi rende molto di più."
+    },
+    {
+      "name": "Marco",
+      "roleKey": "review_tenant",
+      "text": "Prenotazione semplice, comunicazione chiara e appartamento curato in ogni dettaglio."
+    },
+    {
+      "name": "Elena",
+      "roleKey": "review_owner",
+      "text": "Finalmente ho trovato un team che segue tutto senza creare stress."
+    },
+    {
+      "name": "David",
+      "roleKey": "review_tenant",
+      "text": "Ottima posizione, check-in facile e assistenza rapida ogni volta che serviva."
+    },
+    {
+      "name": "Sofia",
+      "roleKey": "review_owner",
+      "text": "L'avvio è stato veloce e i risultati si sono visti già nei primi mesi."
+    },
+    {
+      "name": "Luca",
+      "roleKey": "review_tenant",
+      "text": "Il soggiorno era esattamente come descritto: pulito, comodo e ben organizzato."
+    },
+    {
+      "name": "Martina",
+      "roleKey": "review_owner",
+      "text": "Report trasparenti e grande attenzione sia all'immobile sia agli ospiti."
+    },
+    {
+      "name": "Claire",
+      "roleKey": "review_tenant",
+      "text": "Tutto è stato semplice e affidabile, dall'arrivo alla partenza."
+    },
+    {
+      "name": "Andrea",
+      "roleKey": "review_owner",
+      "text": "Un partner serio per chi vuole migliorare la redditività e proteggere l'immobile."
+    },
+    {
+      "name": "Thomas",
+      "roleKey": "review_tenant",
+      "text": "Appartamento molto bello, team reattivo e esperienza complessiva davvero positiva."
+    }
+  ]
+}
 }
