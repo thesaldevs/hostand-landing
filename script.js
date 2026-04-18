@@ -80,7 +80,7 @@
     const navbar = $('#navbar');
     if (!navbar) return;
 
-    navbar.innerHTML = '';
+    navbar.innerHTML = '<h1>hostand</h1>';
 
     // nav links
     safeArray(config.nav).forEach((item) => {
