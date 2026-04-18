@@ -236,7 +236,7 @@
       wrap.appendChild(box);
     });
   }
-  
+
   function buildBusiness(config) {
     const section = $('#business');
     if (!section) return;
@@ -246,10 +246,93 @@
 
     section.innerHTML = `
       <h2 data-i18n="${s.titleKey}"></h2>
-      <p data-i18n="${s.introKey}" class="section-intro"></p>
+      <p data-i18n="${s.introKey}" class="section-intro business-intro"></p>
+
       <div class="business-layout">
-        <div class="business-main"> 
-          <ul class="services-list"></ul>
+        <div class="business-main">
+
+          <div class="business-block business-problem">
+            <h3 data-i18n="business_problem_title"></h3>
+            <ul class="business-problem-list">
+              <li data-i18n="business_problem_1"></li>
+              <li data-i18n="business_problem_2"></li>
+              <li data-i18n="business_problem_3"></li>
+            </ul>
+            <p class="business-closing" data-i18n="business_problem_closing"></p>
+          </div>
+
+          <div class="business-block business-value">
+            <h3 data-i18n="business_value_title"></h3>
+            <p class="business-lead" data-i18n="business_value_subtitle"></p>
+            <p class="business-highlight-label" data-i18n="business_highlight_label"></p>
+
+            <div class="business-highlights">
+              <div class="business-highlight-card" data-i18n="business_highlight_1"></div>
+              <div class="business-highlight-card" data-i18n="business_highlight_2"></div>
+              <div class="business-highlight-card" data-i18n="business_highlight_3"></div>
+              <div class="business-highlight-card" data-i18n="business_highlight_4"></div>
+              <div class="business-highlight-card" data-i18n="business_highlight_5"></div>
+            </div>
+          </div>
+
+          <div class="business-block business-services">
+            <h3 data-i18n="business_services_title"></h3>
+            <p class="business-lead" data-i18n="business_services_subtitle"></p>
+            <p class="business-services-label" data-i18n="business_services_label"></p>
+
+            <div class="business-services-grid">
+              <div class="service-card" data-i18n="business_service_1"></div>
+              <div class="service-card" data-i18n="business_service_2"></div>
+              <div class="service-card" data-i18n="business_service_3"></div>
+              <div class="service-card" data-i18n="business_service_4"></div>
+              <div class="service-card" data-i18n="business_service_5"></div>
+              <div class="service-card" data-i18n="business_service_6"></div>
+            </div>
+          </div>
+
+          <div class="business-block business-process">
+            <h3 data-i18n="business_process_title"></h3>
+            <p class="business-lead" data-i18n="business_process_intro"></p>
+
+            <div class="business-process-grid">
+              <div class="process-card">
+                <span class="process-number">01</span>
+                <h4 data-i18n="business_process_1_title"></h4>
+                <p data-i18n="business_process_1_text"></p>
+              </div>
+              <div class="process-card">
+                <span class="process-number">02</span>
+                <h4 data-i18n="business_process_2_title"></h4>
+                <p data-i18n="business_process_2_text"></p>
+              </div>
+              <div class="process-card">
+                <span class="process-number">03</span>
+                <h4 data-i18n="business_process_3_title"></h4>
+                <p data-i18n="business_process_3_text"></p>
+              </div>
+              <div class="process-card">
+                <span class="process-number">04</span>
+                <h4 data-i18n="business_process_4_title"></h4>
+                <p data-i18n="business_process_4_text"></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="business-block business-cta-box">
+            <h3 data-i18n="business_cta_title"></h3>
+            <p data-i18n="business_cta_text"></p>
+            <p class="business-note strong" data-i18n="business_cta_note"></p>
+
+            <a 
+              href="mailto:info@hostand.eu?subject=Free consultation request&body=Hi, I’d like to request a free consultation."
+              class="business-cta-button"
+              data-i18n="business_cta_button">
+            </a>
+            <div class="business-urgency">
+              <h4 data-i18n="business_urgency_title"></h4>
+              <p data-i18n="business_urgency_text"></p>
+            </div>
+          </div>
         </div>
 
         <aside id="business-login" class="business-login-card">
@@ -267,18 +350,27 @@
       </div>
     `;
 
-    const ul = section.querySelector('.services-list');
-    const services = cfg.i18n?.[currentLang]?.[s.servicesKey] || [];
-
-    services.forEach(text => {
-      const li = document.createElement('li');
-      li.textContent = text;
-      ul.appendChild(li);
-    });
-
     applyI18n(currentLang);
+    initProcessAnimation();
   }
+  function initProcessAnimation() {
+  const cards = document.querySelectorAll('.process-card');
 
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    },
+    {
+      threshold: 0.2
+    }
+  );
+
+  cards.forEach(card => observer.observe(card));
+}
   function buildTravel(config) {
     const section = $('#travel');
     if (!section) return;
