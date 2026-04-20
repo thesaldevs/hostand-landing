@@ -531,10 +531,40 @@
 
     const duplicatedReviews = [...reviews, ...reviews];
 
-    section.innerHTML = `
 
+    section.innerHTML = `
       <h2 data-i18n="${s.titleKey}"></h2>
-      <p data-i18n="${s.contentKey}" class="about-text"></p>
+
+      <div class="about-custom">
+        <p data-i18n="about_custom_1"></p>
+        <p data-i18n="about_custom_2"></p>
+        <p data-i18n="about_custom_3"></p>
+        <p data-i18n="about_custom_4"></p>
+        <p data-i18n="about_custom_5"></p>
+      </div>
+      <h3 class="about-numbers-title" data-i18n="about_numbers_title"></h3>
+
+      <div class="about-metrics">
+        <div class="metric">
+          <p class="metric-label" data-i18n="about_num_1"></p>
+          <h4 class="metric-value counter" data-target="100">0</h4>
+        </div>
+
+        <div class="metric-divider"></div>
+
+        <div class="metric">
+          <p class="metric-label" data-i18n="about_num_2"></p>
+          <h4 class="metric-value counter" data-target="3000000">0</h4>
+        </div>
+
+        <div class="metric-divider"></div>
+
+        <div class="metric">
+          <p class="metric-label" data-i18n="about_num_3"></p>
+          <h4 class="metric-value counter" data-target="15000">0</h4>
+        </div>
+      </div>
+      <h2 class="about-reviews-title" data-i18n="about_title_review"></h2>
       <div class="reviews-marquee">
         <div class="reviews-track"></div>
       </div>
@@ -562,44 +592,49 @@
 
     // Applica subito le traduzioni anche agli elementi appena creati
     applyI18n(lang);
+    initCounters();
   }
 
   function buildFooter(config) {
-    const footer = $('#siteFooter');
-    if (!footer) return;
+  const footer = $('#siteFooter');
+  if (!footer) return;
 
-    footer.innerHTML = '';
+  footer.innerHTML = '';
 
-    const leftKey = config?.sections?.footer?.leftKey || 'no_cookies';
-    const rightKey = config?.sections?.footer?.rightKey || 'made_by';
+  const leftKey = config?.sections?.footer?.leftKey || 'no_cookies';
+  const rightKey = config?.sections?.footer?.rightKey || 'made_by';
 
-    const left = document.createElement('div');
-    left.className = 'footer-section';
-    const leftP = document.createElement('p');
-    leftP.setAttribute('data-i18n', leftKey);
-    left.appendChild(leftP);
+  const wrapper = document.createElement('div');
+  wrapper.className = 'footer-row';
 
-    const right = document.createElement('div');
-    right.className = 'footer-section';
-    const rightP = document.createElement('p');
-    rightP.setAttribute('data-i18n', rightKey);
-    right.appendChild(rightP);
+  // P.IVA
+  const vat = document.createElement('p');
+  vat.textContent = 'Hostand - P.iva: IT17531271009';
 
-    // Optional credits email (comes ONLY from config)
-    const creditsEmail = config?.footer?.creditsEmail || config?.credits?.email;
-    if (creditsEmail) {
-      const p = document.createElement('p');
-      const a = document.createElement('a');
-      a.href = `mailto:${creditsEmail}`;
-      a.textContent = creditsEmail;
-      p.appendChild(a);
-      right.appendChild(p);
-    }
+  // separator
+  const sep1 = document.createElement('span');
+  sep1.className = 'footer-sep';
 
-    footer.appendChild(left);
-    footer.appendChild(right);
+  // cookies
+  const cookies = document.createElement('p');
+  cookies.setAttribute('data-i18n', leftKey);
+
+  // separator
+  const sep2 = document.createElement('span');
+  sep2.className = 'footer-sep';
+
+  // developed by
+  const dev = document.createElement('p');
+  dev.setAttribute('data-i18n', rightKey);
+
+  wrapper.appendChild(vat);
+  wrapper.appendChild(sep1);
+  wrapper.appendChild(cookies);
+  wrapper.appendChild(sep2);
+  wrapper.appendChild(dev);
+
+  footer.appendChild(wrapper);
   }
-
   function applyTheme(config) {
     // Backward compatible: supports both theme.* and flat keys
     const theme = config.theme || {};
@@ -615,7 +650,49 @@
     if (config.hero?.position) setCssVar('--hero-position', config.hero.position);
     if (typeof config.hero?.overlayOpacity === 'number') setCssVar('--hero-overlay', config.hero.overlayOpacity);
   }
+  function initCounters() {
+  const counters = document.querySelectorAll('.counter');
 
+  if (!counters.length) return;
+
+  const formatNumber = (num) => {
+    if (num >= 1000000) return Math.floor(num / 1000000) + 'M+';
+    if (num >= 1000) return Math.floor(num / 1000) + 'K+';
+    return Math.floor(num) + '+';
+  };
+
+  const animate = (el) => {
+    if (el.dataset.animated) return;
+    el.dataset.animated = "true";
+
+    const target = +el.getAttribute('data-target');
+    let current = 0;
+
+    const update = () => {
+      current += (target - current) * 0.08;
+
+      if (current < target) {
+        el.innerText = formatNumber(current);
+        requestAnimationFrame(update);
+      } else {
+        el.innerText = formatNumber(target);
+      }
+    };
+
+    update();
+  };
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animate(entry.target);
+        obs.unobserve(entry.target); // importante
+      }
+    });
+  }, { threshold: 0.4 });
+
+  counters.forEach(counter => observer.observe(counter));
+}
   function initMenu() {
     const navbar = document.getElementById('navbar');
     const menuIcon = document.getElementById('menuIcon');
