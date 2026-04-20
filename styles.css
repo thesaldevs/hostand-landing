@@ -116,6 +116,9 @@ nav {
 
 /* ---------------- Mobile: fullscreen overlay ---------------- */
 @media screen and (max-width: 767px) {
+  .nav-logo{
+  width: 50%;
+ }
   nav {
     position: fixed;
     top: 0;
