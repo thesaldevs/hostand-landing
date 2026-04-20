@@ -7,6 +7,9 @@
   font-variation-settings:
     "wdth" 100;
 }
+.nav-logo{
+  width: 40%;
+}
 
 html,
 body {
@@ -104,9 +107,11 @@ nav {
     opacity: 1;
     transform: none;
   }
-  nav h1{
+
+  nav img{
     display: none;
   }
+
 }
 
 /* ---------------- Mobile: fullscreen overlay ---------------- */
@@ -149,7 +154,7 @@ nav {
     opacity: 1;
     transform: translateY(0);
   }
-  nav.active h1{
+  nav.active img{
     display: block;
     color: white;
     font-size: 2.5em;

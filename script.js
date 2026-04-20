@@ -80,7 +80,7 @@
     const navbar = $('#navbar');
     if (!navbar) return;
 
-    navbar.innerHTML = '<h1>hostand</h1>';
+    navbar.innerHTML = '<img src="img/logo.svg" alt="Hostand logo" class="nav-logo">';
 
     // nav links
     safeArray(config.nav).forEach((item) => {
