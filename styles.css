@@ -8,7 +8,7 @@
     "wdth" 100;
 }
 .nav-logo{
-  width: 40%;
+  width: 20%;
 }
 
 html,
@@ -154,6 +154,7 @@ nav {
     opacity: 1;
     transform: translateY(0);
   }
+
   nav.active img{
     display: block;
     color: white;
